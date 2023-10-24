@@ -5,9 +5,9 @@ pkgrel=1
 pkgdesc="The most basic dynamic function row daemon possible"
 arch=('x86_64')
 license=('MIT')
-depends=('linux-t2' 'cargo' 'git')
+depends=('linux-t2')
 conflicts=('touchbard')
-makedepends=('git')
+makedepends=('git' 'cargo')
 source=("git+https://github.com/kekrby/tiny-dfr")
 sha256sums=('SKIP')
 
