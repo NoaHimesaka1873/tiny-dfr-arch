@@ -17,11 +17,13 @@ pkgver() {
 }
 
 prepare() {
+    cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
+    cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features
