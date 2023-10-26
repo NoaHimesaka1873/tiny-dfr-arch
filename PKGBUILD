@@ -42,5 +42,6 @@ package() {
 	install -Dm644 "$pkgname/etc/tiny-dfr.conf" "$pkgdir/etc/tiny-dfr.conf"
 
 	# Install resources
+	mkdir -p "$pkgdir/usr/share/"
 	cp -r "$pkgname/share/tiny-dfr" "$pkgdir/usr/share/tiny-dfr"
 }
