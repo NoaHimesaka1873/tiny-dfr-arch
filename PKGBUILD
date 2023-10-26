@@ -1,7 +1,7 @@
 # Maintainer: Noa Himesaka <himesaka@noa.codes>
 pkgname=tiny-dfr
 pkgver=r45.6122386
-pkgrel=1
+pkgrel=2
 pkgdesc="The most basic dynamic function row daemon possible"
 arch=('x86_64')
 license=('MIT')
@@ -40,4 +40,7 @@ package() {
         install -Dm644 "$pkgname/etc/udev/rules.d/99-touchbar-tiny-dfr.rules" "$pkgdir/usr/lib/udev/rules.d/99-touchbar-tiny-dfr.rules"
 	# Install config
 	install -Dm644 "$pkgname/etc/tiny-dfr.conf" "$pkgdir/etc/tiny-dfr.conf"
+
+	# Install resources
+	cp -r "$pkgname/share/tiny-dfr" "$pkgdir/usr/share/tiny-dfr"
 }
