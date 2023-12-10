@@ -33,13 +33,13 @@ package() {
 	# Install binary
 	install -Dm755 "$pkgname/target/release/tiny-dfr" "$pkgdir/usr/bin/tiny-dfr"
 	# Install systemd service
-	install -Dm644 "$pkgname/etc/systemd/system/tiny-dfr.service" "$pkgdir/usr/lib/systemd/system/tiny-dfr.service"
+        install -Dm644 "$pkgname/etc/systemd/system/tiny-dfr.service" "$pkgdir/usr/lib/systemd/system/tiny-dfr.service"
+        install -Dm644 "$pkgname/etc/systemd/system/systemd-backlight@backlight:228200000.display-pipe.0.service" "$pkgdir/usr/lib/systemd/system/systemd-backlight@backlight:228200000.display-pipe.0.service"
+	install -Dm644 "$pkgname/etc/systemd/system/systemd-backlight@backlight:appletb_backlight.service" "$pkgdir/usr/lib/systemd/system/systemd-backlight@backlight:appletb_backlight.service"
 	# Install udev rule
-	install -Dm644 "$pkgname/etc/udev/rules.d/99-touchbar-backlight.rules" "$pkgdir/usr/lib/udev/rules.d/99-touchbar-backlight.rules"
 	install -Dm644 "$pkgname/etc/udev/rules.d/99-touchbar-seat.rules" "$pkgdir/usr/lib/udev/rules.d/99-touchbar-seat.rules"
         install -Dm644 "$pkgname/etc/udev/rules.d/99-touchbar-tiny-dfr.rules" "$pkgdir/usr/lib/udev/rules.d/99-touchbar-tiny-dfr.rules"
 	# Install config
-	install -Dm644 "$pkgname/etc/tiny-dfr.conf" "$pkgdir/etc/tiny-dfr.conf"
 
 	# Install resources
 	mkdir -p "$pkgdir/usr/share/"
