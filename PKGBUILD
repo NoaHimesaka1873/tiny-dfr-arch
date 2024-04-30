@@ -1,14 +1,14 @@
 # Maintainer: Noa Himesaka <himesaka@noa.codes>
 pkgname=tiny-dfr
-pkgver=r70.8a5d413
-pkgrel=3
+pkgver=r86.f8b9de6
+pkgrel=1
 pkgdesc="The most basic dynamic function row daemon possible"
 arch=('x86_64')
 license=('MIT')
 depends=('linux-t2' 'pango' 'libinput' 'gdk-pixbuf2')
 conflicts=('touchbard')
 makedepends=('git' 'cargo')
-source=("git+https://github.com/kekrby/tiny-dfr")
+source=("git+https://github.com/sharpenedblade/tiny-dfr")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -30,19 +30,18 @@ build() {
 }
 
 package() {
-	# Install binary
+  # Install binary
 	install -Dm755 "$pkgname/target/release/tiny-dfr" "$pkgdir/usr/bin/tiny-dfr"
 	# Install systemd service
-        install -Dm644 "$pkgname/etc/systemd/system/tiny-dfr.service" "$pkgdir/usr/lib/systemd/system/tiny-dfr.service"
-        install -Dm644 "$pkgname/etc/systemd/system/systemd-backlight@backlight:228200000.display-pipe.0.service" "$pkgdir/usr/lib/systemd/system/systemd-backlight@backlight:228200000.display-pipe.0.service"
+  install -Dm644 "$pkgname/etc/systemd/system/tiny-dfr.service" "$pkgdir/usr/lib/systemd/system/tiny-dfr.service"
+  install -Dm644 "$pkgname/etc/systemd/system/systemd-backlight@backlight:228200000.display-pipe.0.service" "$pkgdir/usr/lib/systemd/system/systemd-backlight@backlight:228200000.display-pipe.0.service"
 	install -Dm644 "$pkgname/etc/systemd/system/systemd-backlight@backlight:appletb_backlight.service" "$pkgdir/usr/lib/systemd/system/systemd-backlight@backlight:appletb_backlight.service"
 	# Install udev rule
 	install -Dm644 "$pkgname/etc/udev/rules.d/99-touchbar-seat.rules" "$pkgdir/usr/lib/udev/rules.d/99-touchbar-seat.rules"
-        install -Dm644 "$pkgname/etc/udev/rules.d/99-touchbar-tiny-dfr.rules" "$pkgdir/usr/lib/udev/rules.d/99-touchbar-tiny-dfr.rules"
+  install -Dm644 "$pkgname/etc/udev/rules.d/99-touchbar-tiny-dfr.rules" "$pkgdir/usr/lib/udev/rules.d/99-touchbar-tiny-dfr.rules"
 	# Install config
 	mkdir -p "$pkgdir/etc/tiny-dfr"
-	touch "$pkgdir/etc/tiny-dfr/config.toml"
-
+  install -Dm644 "$pkgname/share/tiny-dfr/config.toml" "$pkgdir/etc/tiny-dfr/config.toml"
 	# Install resources
 	mkdir -p "$pkgdir/usr/share/"
 	cp -r "$pkgname/share/tiny-dfr" "$pkgdir/usr/share/tiny-dfr"
