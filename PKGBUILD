@@ -1,14 +1,14 @@
 # Maintainer: Noa Himesaka <himesaka@noa.codes>
 pkgname=tiny-dfr
-pkgver=r87.82d80ae
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="The most basic dynamic function row daemon possible"
 arch=('x86_64')
 license=('MIT')
-depends=('linux-t2' 'pango' 'libinput' 'gdk-pixbuf2')
+depends=('linux-t2' 'pango' 'libinput' 'gdk-pixbuf2' 'ttf-ubuntu-font-family')
 conflicts=('touchbard')
 makedepends=('git' 'cargo')
-source=("git+https://github.com/sharpenedblade/tiny-dfr")
+source=("git+https://github.com/WhatAmISupposedToPutHere/tiny-dfr#tag=v$pkgver")
 sha256sums=('SKIP')
 
 pkgver() {
