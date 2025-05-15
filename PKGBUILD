@@ -1,6 +1,6 @@
 # Maintainer: Noa Himesaka <himesaka@noa.codes>
 pkgname=tiny-dfr
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="The most basic dynamic function row daemon possible"
 arch=('x86_64')
@@ -8,12 +8,12 @@ license=('MIT')
 depends=('linux-t2' 'pango' 'libinput' 'gdk-pixbuf2' 'ttf-ubuntu-font-family')
 conflicts=('touchbard')
 makedepends=('git' 'cargo')
-source=("git+https://github.com/WhatAmISupposedToPutHere/tiny-dfr#tag=v$pkgver")
+source=("git+https://github.com/AsahiLinux/tiny-dfr")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
