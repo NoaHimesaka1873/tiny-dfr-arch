@@ -41,6 +41,7 @@ jobs:
       if: ${{ !contains(github.event.head_commit.message, '[no rel]') && !contains(github.event.head_commit.message, '[no build]') }}
       id: create_tag
       run: |
+        rm -rf tiny-dfr
         git clone https://github.com/AsahiLinux/tiny-dfr
         cd tiny-dfr
         echo "tag=$(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g')" >> $GITHUB_OUTPUT
