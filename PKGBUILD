@@ -7,7 +7,7 @@ arch=('x86_64')
 license=('MIT')
 depends=('linux-t2' 'pango' 'libinput' 'gdk-pixbuf2' 'ttf-ubuntu-font-family' 'librsvg')
 conflicts=('touchbard')
-makedepends=('git' 'cargo')
+makedepends=('git' 'cargo' 'librsvg')
 source=("git+https://github.com/AsahiLinux/tiny-dfr")
 sha256sums=('SKIP')
 
