@@ -41,9 +41,9 @@ jobs:
       if: ${{ !contains(github.event.head_commit.message, '[no rel]') && !contains(github.event.head_commit.message, '[no build]') }}
       id: create_tag
       run: |
-        source PKGBUILD
-        echo "tag=${pkgver}" >> $GITHUB_OUTPUT
-        echo $pkgver $pkgrel
+        git clone https://github.com/AsahiLinux/tiny-dfr
+        cd tiny-dfr
+        echo "tag=$(git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g')" >> $GITHUB_OUTPUT
     - name: Release
       if: ${{ !contains(github.event.head_commit.message, '[no rel]') && !contains(github.event.head_commit.message, '[no build]') }}
       uses: softprops/action-gh-release@v1
