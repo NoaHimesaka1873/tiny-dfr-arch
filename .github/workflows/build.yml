@@ -12,6 +12,8 @@ jobs:
         BUILDUSER=mahirooyama
         BUILDGROUP=onimai
         HOSTNAME=onimai-i-am-now-your-sister
+        _ID=$(id -u)
+        _GID=$(id -g)
         cat << EOF > entrypoint.sh
         cd /build
         groupadd -r $BUILDGROUP
@@ -23,6 +25,7 @@ jobs:
         sudo -u $BUILDUSER gpg --keyserver keyserver.ubuntu.com --recv-keys 38DBBDC86092693E
         sudo -u $BUILDUSER bash -c 'export MAKEFLAGS=j\$(nproc) && makepkg -s -d --noconfirm'
         rm -rf tiny-dfr
+        chown -R $_ID:$_GID ./
         EOF
 
         docker run -h $HOSTNAME -t -v $PWD:/build archlinux /bin/bash /build/entrypoint.sh
