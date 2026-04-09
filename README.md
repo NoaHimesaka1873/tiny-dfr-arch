@@ -1,2 +1,2 @@
 # tiny-dfr-arch
-tiny-dfr packaging for Arch Linux
+Merged into NoaHimesaka1873/arch-mact2-PKGBUILDs
